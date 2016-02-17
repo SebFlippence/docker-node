@@ -3,15 +3,17 @@ set -e
 
 hash git 2>/dev/null || { echo >&2 "git not found, exiting."; }
 
-array_0_12='0 latest';
+array_0_12='0';
+array_4_3='4 argon';
+array_5_6='5 latest';
 
 cd $(cd ${0%/*} && pwd -P);
 
 versions=( */ )
 versions=( "${versions[@]%/}" )
-url='git://github.com/joyent/docker-node'
+url='git://github.com/nodejs/docker-node'
 
-echo '# maintainer: Joyent Image Team <image-team@joyent.com> (@joyent)'
+echo '# maintainer: Node.js Docker Team <https://github.com/nodejs/docker-node> (@nodejs)'
 
 for version in "${versions[@]}"; do
 	eval stub=$(echo "$version" | awk -F. '{ print "$array_" $1 "_" $2 }');
